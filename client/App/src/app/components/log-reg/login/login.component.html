@@ -1,0 +1,23 @@
+<div class="col">
+  <h1 class="display-3">Login</h1>
+  <form class="form-group mt-2">
+    <label for="name">Name</label>
+    <input 
+      class="form-control"
+      type="text" 
+      name="name" 
+      required
+      minlength="3"
+      maxlength="255"
+      [(ngModel)]='user.name'
+      #name='ngModel'>
+    <div 
+      class="text-danger" 
+      *ngIf='name.errors && name.touched && name.dirty'>
+        *
+        <span *ngIf='name.errors.required'>First name is required</span>
+        <span *ngIf='name.errors.minlength'>First name must be longer than 3 characters</span>
+    </div>
+  </form>
+  <button class="btn btn-success float-right" (click)='login()' *ngIf='!name.errors'>Login</button>
+</div>

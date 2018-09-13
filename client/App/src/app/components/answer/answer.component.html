@@ -1,0 +1,26 @@
+<button (click)='toHome()' class="btn btn-success">Home</button>
+<button class="btn btn-danger" (click)='logout()'>Logout</button>
+
+<h1 class="display-3">{{question.content}}</h1>
+<div class="container">
+  <form class="form-group">
+    <label for="content">Your Answer</label>
+    <textarea name="content" [(ngModel)]='answer.content' required minlength="5" #content='ngModel' class="form-control" rows="5"></textarea>
+    <div class="text-danger" *ngIf= 'content.errors && content.touched && content.dirty'>
+      *
+      <span *ngIf='content.errors.required'>Answer is required</span>
+      <span *ngIf='content.errors.minlength'>Answer must be longer than 5 characters</span>
+    </div>
+    <label for="details">details (Optional)</label>
+    <textarea name="details" [(ngModel)]='answer.details' required minlength="10" #details='ngModel' class="form-control"
+      rows="5"></textarea>
+  </form>
+  <div class="row float-right">
+    <div class="col">
+      <button (click)='toHome()' class="btn btn-success">Cancel</button>
+    </div>
+    <div class="col">
+      <button (click)='addAnswer()' class="btn btn-success" *ngIf='!content.errors'>Submit</button>
+    </div>
+  </div>
+</div>

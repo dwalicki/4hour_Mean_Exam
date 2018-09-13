@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="display-2">
+      Welcome {{user.name}}!</h1>
+  <button (click)='addQuestion()' class=" btn btn-primary m-1">Add A Question</button>
+  <button class="btn btn-danger mr-3 float-right" (click)='logout()'>Logout</button>
+
+
+  <table class="table">
+      <thead>
+          <th scope="col">Question</th>
+          <th scope="col">Answers</th>
+          <th scope="col">Action</th>
+      </thead>
+      <tr *ngFor='let question of questions'>
+          <td>{{question.content}}</td>
+          <td>{{question.answers.length}}</td>
+          <td>
+              <button (click)='showAnswers(question._id)' class="btn btn-primary">Show</button>
+              <button (click)='answerQuestion(question._id)' class="btn btn-success">Answer</button>
+              
+          </td>
+      </tr>
+  </table>
+</div>
